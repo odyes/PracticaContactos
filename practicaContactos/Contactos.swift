@@ -6,4 +6,12 @@
 //  Copyright © 2022 ulsa. All rights reserved.
 //
 
-import Foundation
+class Contactos{
+    var nombre : String
+    var numero : String
+    
+    init(nombre: String, numero: String){
+        self.nombre = nombre
+        self.numero = numero
+    }
+}
