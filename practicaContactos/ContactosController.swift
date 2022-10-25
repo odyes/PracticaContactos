@@ -10,7 +10,10 @@ import UIKit
 
 class ContactosController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var contactos : [Contactos] = []
-
+   
+    @IBOutlet weak var tvContactos: UITableView!
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
@@ -18,12 +21,11 @@ class ContactosController: UIViewController, UITableViewDelegate, UITableViewDat
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    //Numero de filas por seccion
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactos.count
     }
     
-    //Construye cada celda
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tableView.dequeueReusableCell(withIdentifier: "celdaContactos") as? CeldaContactosController
         celda?.lblNombre.text = contactos[indexPath.row].nombre
@@ -35,22 +37,29 @@ class ContactosController: UIViewController, UITableViewDelegate, UITableViewDat
         if segue.identifier == "goToAgregar"{
             let destino = segue.destination as! AgregarController
             destino.callbackAgregar = agregarContacto
+            
+        } else if segue.identifier == "goToEditar" {
+            let destino = segue.destination as! EditarController
+            destino.callbackActualizar = actualizarContacto
+            destino.contacto = contactos[tvContactos.indexPathForSelectedRow!.row]
         }
     }
     
-    func agregarContacto(contactos: Contactos){
-        contactos.append(contactos)
+    
+    func agregarContacto(contacto: Contactos){
+        contactos.append(contacto)
         tvContactos.reloadData()
     }
     
     func actualizarContacto(){
-        tvContactos.reloadData
+        tvContactos.reloadData()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        contactos.append(Contactos(nombre: "José Martín", numero: "6471765879"))
+        contactos.append(Contactos(nombre: "Alejandra Esquer", numero: "6471179082"))
         contactos.append(Contactos(nombre: "José Martín", numero: "6471765879"))
         contactos.append(Contactos(nombre: "José Martín", numero: "6471765879"))
         contactos.append(Contactos(nombre: "José Martín", numero: "6471765879"))

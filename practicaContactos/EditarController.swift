@@ -9,7 +9,7 @@
 import UIKit
 
 class EditarController : UIViewController{
-    var contactos : Contactos?
+    var contacto : Contactos?
     var callbackActualizar : (() -> Void)?
     
     @IBOutlet weak var txtNombre: UITextField!
@@ -17,12 +17,19 @@ class EditarController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if contacto != nil{
+            txtNombre.text = contacto!.nombre
+            txtNumero.text = contacto!.numero
+        }
     }
     
     
     @IBAction func doTapActualizar(_ sender: Any) {
-        contactos?.nombre = txtNombre.text!
-        contactos?.numero = txtNumero.text!
-        callbackActualizar()
+        if callbackActualizar != nil{
+            contacto?.nombre = txtNombre.text!
+            contacto?.numero = txtNumero.text!
+            callbackActualizar!()
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

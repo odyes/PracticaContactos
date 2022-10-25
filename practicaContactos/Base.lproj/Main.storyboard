@@ -87,6 +87,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tvContactos" destination="90X-WN-vwz" id="7EM-GB-V4k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,11 +135,18 @@
                                 <rect key="frame" x="303" y="308" width="56" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Guardar"/>
+                                <connections>
+                                    <action selector="doTapAgregar:" destination="kds-NB-VVD" eventType="touchUpInside" id="WaO-WH-qdu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="swF-Wn-I0D"/>
                     </view>
+                    <connections>
+                        <outlet property="txtNombre" destination="V5E-5v-y5v" id="eGN-HA-tJY"/>
+                        <outlet property="txtNumero" destination="iUi-kz-Xkh" id="exG-GC-Zap"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Br-Rr-9gk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,7 +193,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Actualizar"/>
                                 <connections>
-                                    <action selector="doTapActualizar:" destination="qbO-4x-My9" eventType="touchUpInside" id="MpP-Ea-2lJ"/>
+                                    <action selector="doTapActualizar:" destination="qbO-4x-My9" eventType="touchUpInside" id="5tb-av-UMg"/>
                                 </connections>
                             </button>
                         </subviews>
